@@ -3,7 +3,7 @@ using ecommerce_api.Domain.Entities.Base;
 
 namespace ecommerce_api.Domain.Entities;
 
-public class Product : EntityBase
+public class Product : ModelBase
 {
     [Required]
     [StringLength(50)]

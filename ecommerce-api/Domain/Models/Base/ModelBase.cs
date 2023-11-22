@@ -2,7 +2,7 @@
 
 namespace ecommerce_api.Domain.Entities.Base;
 
-public class EntityBase
+public class ModelBase
 {
     [Key]
     public int Id { get; set; }
