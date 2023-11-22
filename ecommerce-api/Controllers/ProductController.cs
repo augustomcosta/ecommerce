@@ -1,5 +1,6 @@
 ﻿using ecommerce_api.Data.Context;
 using ecommerce_api.Domain.Entities;
+using ecommerce_api.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,28 +10,25 @@ namespace ecommerce_api.Controllers;
 [Route("api/[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly IProductRepository _repository;
 
-    public ProductController(AppDbContext context)
+    public ProductController(IProductRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
     [HttpGet]
     public async Task<ActionResult<List<Product>>> GetAllProducts()
     {
-        var products = await _context.Products.ToListAsync();
-        if (products is null)
-        {
-            return NotFound();
-        }
-        return products;
+        var products = _repository.GetAllAsync();
+
+        return Ok(products);
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetById(int id)
     {
-       return await _context.Products.FindAsync(id);
+        return await _repository.GetByIdAsync(id);
     }
     
 }

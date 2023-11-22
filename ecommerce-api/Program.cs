@@ -1,6 +1,7 @@
 using ecommerce_api.Data.Context;
 using ecommerce_api.Data.RepositoriesImpl;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Migrations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,4 +34,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using var scope = app.Services.CreateAsyncScope();
+var services = scope.ServiceProvider;
+var context = services.GetRequiredService<AppDbContext>();
+var logger = services.GetRequiredService<ILogger<Program>>();
+
+try
+{
+    await context.Database.MigrateAsync();
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "An error ocurred during the migration");
+}
 app.Run();

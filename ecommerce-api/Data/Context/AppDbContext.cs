@@ -8,4 +8,7 @@ public class AppDbContext : DbContext
     public AppDbContext(DbContextOptions options) : base (options) { }
 
     public DbSet<Product> Products { get; set; }
+    public DbSet<ProductCategory> Categories { get; set; }
+    public DbSet<ProductBrand> Brands { get; set; }
+    
 }
