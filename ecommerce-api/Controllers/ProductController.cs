@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ecommerce_api.Controllers.Base;
 using ecommerce_api.Data.Specifications;
 using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Repositories;
@@ -7,9 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce_api.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class ProductController : ControllerBase
+public class ProductController : BaseController
 {
     private readonly IGenericRepository<Product> _productRepo;
 
