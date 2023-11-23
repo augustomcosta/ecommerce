@@ -1,5 +1,8 @@
-﻿using ecommerce_api.Domain.Entities;
+﻿using AutoMapper;
+using ecommerce_api.Data.Specifications;
+using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce_api.Controllers;
@@ -13,26 +16,44 @@ public class ProductController : ControllerBase
     private readonly IGenericRepository<ProductCategory> _categoryRepo;
 
     private readonly IGenericRepository<ProductBrand> _brandRepo;
+
+    private readonly IMapper _mapper;
     public ProductController(IGenericRepository<Product> productRepo, 
                             IGenericRepository<ProductCategory> categoryRepo,
-                            IGenericRepository<ProductBrand> brandRepo)
+                            IGenericRepository<ProductBrand> brandRepo,
+                            IMapper mapper)
                             {
                                 _productRepo = productRepo;
                                 _categoryRepo = categoryRepo;
                                 _brandRepo = brandRepo;
+                                _mapper = mapper;
                             }   
 
     [HttpGet("products")]
-    public async Task<ActionResult> GetAllProducts()
+    public async Task<ActionResult<List<ProductToReturnDto>>> GetProducts()
     {
-        var products = await _productRepo.GetAllAsync();
-        return Ok(products);
+        var spec = new ProductsWithCategoriesAndBrandsSpecification();
+        var products = await _productRepo.ListAsync(spec);
+        return products.Select(product => new ProductToReturnDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            Price = product.Price,
+            ImageUrl = product.ImageUrl,
+            Category = product.Category.Name,
+            Brand = product.Brand.Name
+        }).ToList();
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Product>> GetById(int id)
+    public async Task<ActionResult<ProductToReturnDto>> GetProductById(int id)
     {
-        return await _productRepo.GetByIdAsync(id);
+        var spec = new ProductsWithCategoriesAndBrandsSpecification(id);
+
+        var product = await _productRepo.GetEntityWithSpec(spec);
+
+        return _mapper.Map<Product, ProductToReturnDto>(product);
     }
 
     [HttpGet("brands")]

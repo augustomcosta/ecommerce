@@ -26,7 +26,7 @@ public class GenericRepository<T> : IGenericRepository<T> where  T : ModelBase
     }
 
     public async Task<T> GetEntityWithSpec(ISpecification<T>? spec)
-    {
+    {       
         return await ApplySpecification(spec).FirstOrDefaultAsync();
     }
 
