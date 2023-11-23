@@ -1,9 +1,12 @@
 ﻿using ecommerce_api.Domain.Entities;
-using ecommerce_api.Domain.Repositories.Base;
 
 namespace ecommerce_api.Domain.Repositories;
 
-public interface IProductRepository : IRepositoryBase<Product>
+public interface IProductRepository
 {
+    Task<IEnumerable<Product>> GetAllAsync();
+    Task<Product> GetByIdAsync(int? id);
+    Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync();
+    Task<IReadOnlyList<ProductCategory>> GetProductCategoriesAsync();
     
 }

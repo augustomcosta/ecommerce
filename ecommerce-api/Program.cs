@@ -1,7 +1,6 @@
 using ecommerce_api.Data.Context;
 using ecommerce_api.Data.RepositoriesImpl;
 using ecommerce_api.Domain.Repositories;
-using ecommerce_api.Migrations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,6 +41,7 @@ var logger = services.GetRequiredService<ILogger<Program>>();
 try
 {
     await context.Database.MigrateAsync();
+    await SeedDataContext.SeedAsync(context);
 }
 catch (Exception ex)
 {

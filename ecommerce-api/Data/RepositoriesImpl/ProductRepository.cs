@@ -1,7 +1,6 @@
 ﻿using ecommerce_api.Data.Context;
 using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Repositories;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ecommerce_api.Data.RepositoriesImpl;
@@ -14,29 +13,32 @@ public class ProductRepository : IProductRepository
         _context = context;
     }
     
-    public async Task<Product> Create(Product product)
-    {
-        throw new NotImplementedException();
-    }
-    
-    [HttpGet]
     public async Task<IEnumerable<Product>> GetAllAsync()
     {
-        return await _context.Products.ToListAsync();
+        var products = await _context.Products
+            .Include(p => p.Brand)
+            .Include(p => p.Category)
+            .ToListAsync();
+        return products;
     }
-    
+
     public async Task<Product> GetByIdAsync(int? id)
     {
-        return await _context.Products.FindAsync(id);
+        return await _context
+            .Products
+            .Include(p => p.Brand)
+            .Include(p => p.Category)
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
+    
+
+    public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
+    {
+        return await _context.Brands.ToListAsync();
     }
 
-    public Task<Product> Update(Product product, int? id)
+    public async Task<IReadOnlyList<ProductCategory>> GetProductCategoriesAsync()
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<Product> Delete(int? id)
-    {
-        throw new NotImplementedException();
+        return await _context.Categories.ToListAsync();
     }
 }

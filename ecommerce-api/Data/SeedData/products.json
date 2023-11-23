@@ -1,7 +1,7 @@
 [
   {
     "Name": "Angular Speedster Board 2000",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Description": "Placeholder description",
     "Price": 200,
     "ImageUrl": "images/products/sb-ang1.png",
     "CategoryId": 1,
@@ -9,7 +9,7 @@
   },
   {
     "Name": "Green Angular Board 3000",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
+    "Description": "Placeholder description",
     "Price": 150,
     "ImageUrl": "images/products/sb-ang2.png",
     "CategoryId": 1,
@@ -17,7 +17,7 @@
   },
   {
     "Name": "Core Board Speed Rush 3",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
+    "Description": "Placeholder description",
     "Price": 180,
     "ImageUrl": "images/products/sb-core1.png",
     "CategoryId": 1,
@@ -25,7 +25,7 @@
   },
   {
     "Name": "Net Core Super Board",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
+    "Description": "Placeholder description",
     "Price": 300,
     "ImageUrl": "images/products/sb-core2.png",
     "CategoryId": 1,
@@ -33,7 +33,7 @@
   },
   {
     "Name": "React Board Super Whizzy Fast",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Description": "Placeholder description",
     "Price": 250,
     "ImageUrl": "images/products/sb-react1.png",
     "CategoryId": 1,
@@ -41,7 +41,7 @@
   },
   {
     "Name": "Typescript Entry Board",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
+    "Description": "Placeholder description",
     "Price": 120,
     "ImageUrl": "images/products/sb-ts1.png",
     "CategoryId": 1,
@@ -49,7 +49,7 @@
   },
   {
     "Name": "Core Blue Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Description": "Placeholder description",
     "Price": 10,
     "ImageUrl": "images/products/hat-core1.png",
     "CategoryId": 2,
@@ -57,7 +57,7 @@
   },
   {
     "Name": "Green React Woolen Hat",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
+    "Description": "Placeholder description",
     "Price": 8,
     "ImageUrl": "images/products/hat-react1.png",
     "CategoryId": 2,
@@ -65,7 +65,7 @@
   },
   {
     "Name": "Purple React Woolen Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Description": "Placeholder description",
     "Price": 15,
     "ImageUrl": "images/products/hat-react2.png",
     "CategoryId": 2,
@@ -73,7 +73,7 @@
   },
   {
     "Name": "Blue Code Gloves",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
+    "Description": "Placeholder description",
     "Price": 18,
     "ImageUrl": "images/products/glove-code1.png",
     "CategoryId": 4,
@@ -81,7 +81,7 @@
   },
   {
     "Name": "Green Code Gloves",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
+    "Description": "Placeholder description",
     "Price": 15,
     "ImageUrl": "images/products/glove-code2.png",
     "CategoryId": 4,
@@ -89,7 +89,7 @@
   },
   {
     "Name": "Purple React Gloves",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
+    "Description": "Placeholder description",
     "Price": 16,
     "ImageUrl": "images/products/glove-react1.png",
     "CategoryId": 4,
@@ -97,7 +97,7 @@
   },
   {
     "Name": "Green React Gloves",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
+    "Description": "Placeholder description",
     "Price": 14,
     "ImageUrl": "images/products/glove-react2.png",
     "CategoryId": 4,
@@ -105,7 +105,7 @@
   },
   {
     "Name": "Redis Red Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
+    "Description": "Placeholder description",
     "Price": 250,
     "ImageUrl": "images/products/boot-redis1.png",
     "CategoryId": 3,
@@ -113,7 +113,7 @@
   },
   {
     "Name": "Core Red Boots",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Description": "Placeholder description",
     "Price": 189.99,
     "ImageUrl": "images/products/boot-core2.png",
     "CategoryId": 3,
@@ -121,7 +121,7 @@
   },
   {
     "Name": "Core Purple Boots",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
+    "Description": "Placeholder description",
     "Price": 199.99,
     "ImageUrl": "images/products/boot-core1.png",
     "CategoryId": 3,
@@ -129,7 +129,7 @@
   },
   {
     "Name": "Angular Purple Boots",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
+    "Description": "Placeholder description",
     "Price": 150,
     "ImageUrl": "images/products/boot-ang2.png",
     "CategoryId": 3,
@@ -137,7 +137,7 @@
   },
   {
     "Name": "Angular Blue Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
+    "Description": "Placeholder description.",
     "Price": 180,
     "ImageUrl": "images/products/boot-ang1.png",
     "CategoryId": 3,
