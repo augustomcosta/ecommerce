@@ -1,6 +1,10 @@
 using ecommerce_api.Data.Context;
 using ecommerce_api.Data.RepositoriesImpl;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Errors;
+using ecommerce_api.Extensions;
+using ecommerce_api.Middleware;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,20 +13,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddApplicationServices(builder.Configuration);
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -30,8 +29,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseStatusCodePagesWithReExecute("errors/{0}");
 
 app.UseStaticFiles();
 
@@ -53,4 +50,5 @@ catch (Exception ex)
 {
     logger.LogError(ex, "An error ocurred during the migration");
 }
+
 app.Run();
