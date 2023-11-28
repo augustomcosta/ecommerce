@@ -7,6 +7,8 @@ public class ProductsWithCategoriesAndBrandsSpecification : BaseSpecification<Pr
 {
     public ProductsWithCategoriesAndBrandsSpecification(ProductSpecParams productParams) 
         : base(x => 
+              (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains
+              (productParams.Search)) && 
               (!productParams.BrandId.HasValue || x.BrandId == productParams.BrandId) && 
               (!productParams.CategoryId.HasValue || x.CategoryId == productParams.CategoryId))
     {
