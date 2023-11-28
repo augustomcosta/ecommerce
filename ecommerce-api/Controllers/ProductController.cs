@@ -5,6 +5,7 @@ using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Repositories;
 using ecommerce_api.Dtos;
 using ecommerce_api.Errors;
+using ecommerce_api.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce_api.Controllers;
@@ -30,11 +31,19 @@ public class ProductController : BaseController
                             }   
 
     [HttpGet("products")]
-    public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts()
+    public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery]ProductSpecParams productParams)
     {
-        var spec = new ProductsWithCategoriesAndBrandsSpecification();
+        var spec = new ProductsWithCategoriesAndBrandsSpecification(productParams);
+
+        var countSpec = new ProductWithFiltersForCountSpecification(productParams);
+        
+        var totalItems = await _productRepo.CountAsync(countSpec);
+
         var products = await _productRepo.ListAsync(spec);
-        return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products));
+
+        var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
+        
+        return Ok(new Pagination<ProductToReturnDto>(productParams.PageIndex, productParams.PageSize,totalItems,data));
     }
 
     [HttpGet("{id}")]
