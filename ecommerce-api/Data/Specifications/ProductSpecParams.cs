@@ -19,6 +19,7 @@ public class ProductSpecParams
 
     private string _search;
 
+    
     public string Search
     {
         get => _search;
