@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ShopService } from './shop.service';
 import { Product } from '../shared/models/product';
 import { Brand } from '../shared/models/brand';
@@ -12,6 +12,7 @@ import { ShopParams } from '../shared/models/shopParams';
   styleUrl: './shop.component.scss'
 })
 export class ShopComponent implements OnInit{
+  @ViewChild('search') searchTerm?: ElementRef; 
   products: Product[] = [];
   brands: Brand[] = [];
   categories: Category[] = [];
@@ -60,11 +61,13 @@ getCategories() {
 
 onBrandSelected(brandId: number) {
   this.shopParams.brandId = brandId;
+  this.shopParams.pageIndex = 1;
   this.getProducts();
 }
 
 onCategorySelected(categoryId: number) {
   this.shopParams.categoryId = categoryId;
+  this.shopParams.pageIndex = 1;
   this.getProducts();
 }
 
@@ -78,6 +81,18 @@ onPageChanged(page: number) {
     this.shopParams.pageIndex = page; 
     this.getProducts();
   }
+}
+
+onSearch() {
+  this.shopParams.search = this.searchTerm?.nativeElement.value;
+  this.shopParams.pageIndex = 1;
+  this.getProducts();
+}
+
+onReset() {
+  if(this.searchTerm) this.searchTerm.nativeElement.value = '';
+  this.shopParams = new ShopParams();
+  this.getProducts();
 }
 
 }
