@@ -20,7 +20,9 @@ export class ShopService {
 
     if(shopParams.brandId > 0) params = params.append('BrandId',shopParams.brandId);
     if(shopParams.categoryId) params = params.append('CategoryId',shopParams.categoryId);
-    params = params.append('PageIndex', shopParams.pageIndex);
+    if(shopParams.pageIndex !== undefined) {
+      params = params.append('PageIndex', shopParams.pageIndex);
+    }
     params = params.append('PageSize',shopParams.pageSize);
     params = params.append('Sort',shopParams.sort);
     
@@ -34,5 +36,5 @@ export class ShopService {
   getCategories() {
     return this.http.get<Category[]>(this.baseUrl + 'Product/categories')
   }
-  
+
 }

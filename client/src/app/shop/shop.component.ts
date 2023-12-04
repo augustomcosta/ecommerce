@@ -73,9 +73,9 @@ this.shopParams.sort= event.target.value;
 this.getProducts();
 }
 
-onPageChanged(event: any) {
-  if (this.shopParams.pageIndex !== event.page) {
-    this.shopParams.pageIndex = event.page; 
+onPageChanged(page: number) {
+  if (this.shopParams.pageIndex !== page) {
+    this.shopParams.pageIndex = page; 
     this.getProducts();
   }
 }
