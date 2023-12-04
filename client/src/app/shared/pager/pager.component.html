@@ -1,0 +1,7 @@
+<ngb-pagination *ngIf = "totalCount && pageSize "
+    [directionLinks]="true" 
+    [collectionSize]="totalCount" 
+    [pageSize]="pageSize" 
+    [maxSize]="10" 
+    (pageChange)= onPagerChanged($event)>
+    </ngb-pagination>
