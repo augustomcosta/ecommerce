@@ -9,7 +9,7 @@
                 
             <h5 class="text-warning ms-3">Brands</h5>
                 <ul class="list-group my-3">
-                    <li class="list-group-item" *ngFor="let brand of brands"
+                    <li class="list-group-item" style = "cursor: pointer;" *ngFor="let brand of brands"
                     [class.active]="brand.id === shopParams.brandId"
                     [value]="brand.id"
                     (click)="onBrandSelected(brand.id)"
@@ -22,7 +22,7 @@
             
             <h5 class="text-warning ms-3">Categories</h5>
                 <ul class="list-group my-3">
-                    <li class="list-group-item" *ngFor="let category of categories"
+                    <li class="list-group-item" style = "cursor: pointer;" *ngFor="let category of categories"
                     [class.active]="category.id === shopParams.categoryId"
                     [value]="category.id"
                     (click)="onCategorySelected(category.id)">
