@@ -10,10 +10,8 @@ import { ShopParams } from '../shared/models/shopParams';
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
-  
 })
 export class ShopComponent implements OnInit{
-     
   products: Product[] = [];
   brands: Brand[] = [];
   categories: Category[] = [];
@@ -24,7 +22,7 @@ export class ShopComponent implements OnInit{
     {name:'Price: High to Low', value:'priceDesc'}
   ];
   totalCount = 0;
-  
+
   constructor(private shopService : ShopService) {}
 
   ngOnInit(): void {
@@ -37,7 +35,7 @@ export class ShopComponent implements OnInit{
     this.shopService.getProducts(this.shopParams).subscribe({
       next: response => {
         this.products = response.data;
-        this.shopParams.pageNumber = response.pageIndex;
+        this.shopParams.pageIndex = response.pageIndex;
         this.shopParams.pageSize = response.pageSize;
         this.totalCount = response.count;
       },
@@ -66,13 +64,20 @@ onBrandSelected(brandId: number) {
 }
 
 onCategorySelected(categoryId: number) {
-  this.shopParams. = categoryId;
+  this.shopParams.categoryId = categoryId;
   this.getProducts();
 }
 
 onSortSelected(event: any) {
 this.shopParams.sort= event.target.value;
 this.getProducts();
+}
+
+onPageChanged(event: any) {
+  if (this.shopParams.pageIndex !== event.page) {
+    this.shopParams.pageIndex = event.page; 
+    this.getProducts();
+  }
 }
 
 }

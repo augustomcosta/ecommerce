@@ -7,7 +7,7 @@ import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
   declarations: [],
   imports: [
     CommonModule,
-    NgbPagination
+    NgbPagination,
   ],
   exports: [
     NgbPagination

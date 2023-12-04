@@ -50,7 +50,13 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <ngb-pagination [collectionSize]="70"/>
+                <ngb-pagination 
+                [directionLinks]="true" 
+                [collectionSize]="totalCount" 
+                [pageSize]="shopParams.pageSize" 
+                [maxSize]="10" 
+                (pageChange)= onPageChanged($event)>
+                </ngb-pagination>
             </div>
         </section>
     </div>
