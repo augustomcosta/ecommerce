@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TestErrorComponent {
   url = environment.apiUrl;
+  validationErrors: string[] = [];
 
   constructor(private http: HttpClient) {}
 
