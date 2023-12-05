@@ -17,8 +17,6 @@
                     {{brand.name}}
                     </li>
                 </ul>
-
-               
             
             <h5 class="text-warning ms-3">Categories</h5>
                 <ul class="list-group my-3">
@@ -42,8 +40,8 @@
                 </app-paging-header>
                 
                 <div class="d-flex mt-2">
-                    <input (keyup.enter)="onSearch()" type="text" placeholder="Search" class="form-control me-2" #search>
-                    <button (click)="onSearch()" class="btn btn-outline-primary mx2">Search</button>
+                    <input (keyup.enter)="onSearch()" type="text" placeholder="Search" class="form-control mr-2" #search>
+                    <button (click)="onSearch()" class="btn btn-outline-primary mx-2">Search</button>
                     <button (click)="onReset()" class="btn btn-outline-primary">Reset</button>
                 </div>
             </div>
