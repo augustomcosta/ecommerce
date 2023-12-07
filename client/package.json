@@ -21,13 +21,17 @@
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "@popperjs/core": "^2.11.8",
+    "angular": "^1.8.3",
     "bootstrap": "^4.0.0",
+    "bootswatch": "^5.3.2",
     "font-awesome": "^4.7.0",
-    "ngx-bootstrap": "^6.2.0",
+    "ngx-bootstrap": "^10.2.0",
+    "ngx-spinner": "^16.0.2",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "tailwindcss": "^3.3.5",
     "tslib": "^2.6.2",
+    "xng-breadcrumb": "^10.0.1",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {

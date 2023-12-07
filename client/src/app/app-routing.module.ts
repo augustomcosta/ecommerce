@@ -7,11 +7,11 @@ import { ServerErrorComponent } from './core/server-error/server-error.component
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent, data: {breadcrumb: 'Home'}},
   {path: 'test-error', component: TestErrorComponent},
   {path: 'not-found', component: NotFoundComponent},
   {path: 'server-error', component: ServerErrorComponent },
-  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)},
+  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule), data: {breadcrumb: 'Shop'}},
   {path: '**', redirectTo: "", pathMatch: 'full'},
 ];
 
