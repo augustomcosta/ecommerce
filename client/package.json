@@ -31,7 +31,7 @@
     "rxjs": "~7.8.0",
     "tailwindcss": "^3.3.5",
     "tslib": "^2.6.2",
-    "xng-breadcrumb": "^10.0.1",
+    "xng-breadcrumb": "^9.0.0",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
