@@ -2,9 +2,9 @@ namespace Domain.Models;
 
 public class BasketItem {
 
-    public string? Id {get; set;}
+    public int Id {get; set;}
 
-    public string? ProductName {get; set;}
+    public required string ProductName {get; set;}
 
     public decimal Price {get; set;}
 
