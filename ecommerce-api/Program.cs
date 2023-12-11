@@ -1,10 +1,6 @@
 using ecommerce_api.Data.Context;
-using ecommerce_api.Data.RepositoriesImpl;
-using ecommerce_api.Domain.Repositories;
-using ecommerce_api.Errors;
 using ecommerce_api.Extensions;
 using ecommerce_api.Middleware;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
