@@ -15,7 +15,7 @@ services:
       - HTTP_USER=root
       - HTTP_PASSWORD=augusto123
     ports:
-      - 5214:5214
+      - 8081:8081
     depends_on:
       - redis
     
