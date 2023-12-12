@@ -1,5 +1,5 @@
 import cuid from 'cuid';
-import { BasketItem } from './basket';
+
 export interface Basket {
   id: string;
   items: BasketItem[];
