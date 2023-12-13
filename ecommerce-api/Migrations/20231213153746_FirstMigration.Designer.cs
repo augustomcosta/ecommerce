@@ -11,8 +11,8 @@ using ecommerce_api.Data.Context;
 namespace ecommerce_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231206114233_HomeMigration")]
-    partial class HomeMigration
+    [Migration("20231213153746_FirstMigration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

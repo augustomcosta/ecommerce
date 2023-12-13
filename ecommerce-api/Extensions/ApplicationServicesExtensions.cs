@@ -1,4 +1,5 @@
 ﻿using ecommerce_api.Data.Context;
+using ecommerce_api.Data.Identity;
 using ecommerce_api.Data.RepositoriesImpl;
 using ecommerce_api.Domain.Repositories;
 using ecommerce_api.Errors;
@@ -17,6 +18,10 @@ public static class ApplicationServicesExtensions
         services.AddDbContext<AppDbContext>(options =>
         {
             options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+        });
+        services.AddDbContext<AppIdentityDbContext>(x =>
+        {
+            x.UseNpgsql(config.GetConnectionString("IdentityConnection"));
         });
 
         services.AddSingleton<IConnectionMultiplexer>(c => {
