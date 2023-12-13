@@ -19,6 +19,7 @@ public class AppIdentityDbContextSeed
                     FirstName = "Bob",
                     LastName = "Bobbity",
                     Street = "10 The Street",
+                    State = "New York",
                     City = "NY",
                     ZipCode = "90210"
                 }
