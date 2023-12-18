@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Models;
 using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Models.Identity;
 using ecommerce_api.Dtos;
@@ -18,6 +19,8 @@ public class MappingProfiles : Profile
             .ForMember(d => d.ImageUrl, o =>
                 o.MapFrom<ProductUrlResolver>());
         CreateMap<Address, AddressDto>().ReverseMap();
+        CreateMap<CustomerBasketDto, CustomerBasket>();
+        CreateMap<BasketItemDto, BasketItem>();
     }
     
     
