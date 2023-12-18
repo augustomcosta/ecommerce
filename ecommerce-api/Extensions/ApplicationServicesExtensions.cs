@@ -16,8 +16,7 @@ public static class ApplicationServicesExtensions
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
     {
-        services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        
         services.AddDbContext<AppDbContext>(options =>
         {
             options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
