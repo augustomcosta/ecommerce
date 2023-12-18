@@ -1,7 +1,10 @@
-﻿using ecommerce_api.Controllers.Base;
+﻿using System.Security.Claims;
+using ecommerce_api.Controllers.Base;
 using ecommerce_api.Domain.Models.Identity;
+using ecommerce_api.Domain.Services.Interfaces;
 using ecommerce_api.Dtos;
 using ecommerce_api.Errors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,14 +14,50 @@ public class AccountController : BaseController
 {
     private readonly UserManager<AppUser> _userManager;
     private readonly SignInManager<AppUser> _signInManager;
-    
-    public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+    private readonly ITokenService _tokenService;
+    public AccountController(UserManager<AppUser> userManager, 
+        SignInManager<AppUser> signInManager, ITokenService tokenService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _tokenService = tokenService;
     }
 
-    [HttpPost]
+    [Authorize]
+    [HttpGet]
+    public async Task<ActionResult<UserDto>> GetCurrentUser()
+    {
+        var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?
+            .Value;
+
+        var user = await _userManager.FindByEmailAsync(email);
+
+        return new UserDto
+        {
+            Email = user.Email,
+            Token = _tokenService.CreateToken(user),
+            DisplayName = user.DisplayName
+        };
+    }
+
+    [HttpGet("emailexists")]
+    public async Task<ActionResult<bool>> CheckEmailExists([FromQuery] string email)
+    {
+        return await _userManager.FindByEmailAsync(email) != null;
+    }
+
+    [HttpGet("address")]
+    public async Task<ActionResult<Address>> GetUserAddress()
+    {
+        var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?
+            .Value;
+
+        var user = await _userManager.FindByEmailAsync(email);
+
+        return user.Address;
+    }
+    
+    [HttpPost("login")]
     public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
     {
         var user = await _userManager.FindByEmailAsync(loginDto.Email);
@@ -32,12 +71,12 @@ public class AccountController : BaseController
         return new UserDto
         {
             Email = user.Email,
-            Token = "This will be a token",
+            Token = _tokenService.CreateToken(user),
             DisplayName = user.DisplayName
         };
     }
 
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
         var user = new AppUser
@@ -53,7 +92,7 @@ public class AccountController : BaseController
         return new UserDto
         {
             DisplayName = user.DisplayName,
-            Token = "This will be a token",
+            Token = _tokenService.CreateToken(user),
             Email = user.Email
         };
     }

@@ -2,6 +2,7 @@
 using ecommerce_api.Data.Specifications;
 using ecommerce_api.Domain.Entities.Base;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Domain.Repositories.Interfaces;
 using ecommerce_api.Domain.Specifications.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

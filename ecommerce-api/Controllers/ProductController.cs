@@ -3,6 +3,7 @@ using ecommerce_api.Controllers.Base;
 using ecommerce_api.Data.Specifications;
 using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Domain.Repositories.Interfaces;
 using ecommerce_api.Dtos;
 using ecommerce_api.Errors;
 using ecommerce_api.Helpers;

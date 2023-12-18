@@ -1,6 +1,7 @@
 ﻿using Domain.Models;
 using ecommerce_api.Controllers.Base;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Domain.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce_api.Controllers;

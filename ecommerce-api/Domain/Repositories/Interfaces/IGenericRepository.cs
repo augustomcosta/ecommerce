@@ -1,7 +1,7 @@
 ﻿using ecommerce_api.Domain.Entities.Base;
 using ecommerce_api.Domain.Specifications.Interfaces;
 
-namespace ecommerce_api.Domain.Repositories;
+namespace ecommerce_api.Domain.Repositories.Interfaces;
 
 public interface IGenericRepository<T> where T : ModelBase
 {

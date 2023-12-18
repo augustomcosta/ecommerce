@@ -2,6 +2,9 @@
 using ecommerce_api.Data.Identity;
 using ecommerce_api.Data.RepositoriesImpl;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Domain.Repositories.Interfaces;
+using ecommerce_api.Domain.Services;
+using ecommerce_api.Domain.Services.Interfaces;
 using ecommerce_api.Errors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +33,7 @@ public static class ApplicationServicesExtensions
         });
         services.AddScoped<IBasketRepository, BasketRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<ITokenService, TokenService>();
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.Configure<ApiBehaviorOptions>(options =>

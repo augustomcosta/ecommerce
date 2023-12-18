@@ -1,6 +1,7 @@
 ﻿using ecommerce_api.Data.Context;
 using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace ecommerce_api.Data.RepositoriesImpl;
