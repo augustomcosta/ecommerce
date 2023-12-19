@@ -12,6 +12,9 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         {
             a.WithOwner();
         });
+        builder.Navigation(a => a.ShipToAddress).IsRequired();
+        builder.Navigation(a => a.DeliveryMethod).IsRequired();
+        builder.Navigation(a => a.OrderItems).IsRequired();
         builder.Property(s => s.Status).HasConversion(
             o => o.ToString(),
             o => (OrderStatus)Enum.Parse(typeof(OrderStatus), o)
