@@ -4,6 +4,7 @@ import { BehaviorSubject, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../shared/models/user';
+import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -54,4 +55,5 @@ export class AccountService {
   checkEmailExists(email:string) {
     return this.http.get<boolean>(this.baseUrl = 'account/emailExists?email=' + email);
   }
+
 }
