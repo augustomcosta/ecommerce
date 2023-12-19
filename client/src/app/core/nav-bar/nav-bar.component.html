@@ -28,19 +28,19 @@
           <a dropdownToggle class="dropdown-toggle">
             <strong>Welcome {{user.displayName}}</strong>
           </a>
-          <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
-            <li class="py-1">
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu">
+            <li role ="menuitem" class="py-1">
               <a routerLink="/basket" class="dropdown-item">
                 <i class="fa fa-shopping-cart me-3"></i>View Basket
               </a>
             </li>
-            <li class="py-1">
+            <li role="menuitem" class="py-1">
               <a routerLink="/orders" class="dropdown-item">
                 <i class="fa fa-history me-3"></i>View Orders
               </a>
             </li>
             <div class="dropdown-divider"></div>
-            <li class="py-1">
+            <li role="menuitem" class="py-1">
               <a (click)="accountService.logout()" class="dropdown-item">
                 <i class="fa fa-sign-out me-3"></i>Logout
               </a>
