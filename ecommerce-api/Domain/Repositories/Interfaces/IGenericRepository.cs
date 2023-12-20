@@ -8,6 +8,7 @@ public interface IGenericRepository<T> where T : ModelBase
     Task<T> GetByIdAsync(int id);
     Task<IEnumerable<T>> GetAllAsync();
     Task<T> GetEntityWithSpec(ISpecification<T> spec);
+    Task<IReadOnlyList<T>> ListAllAsync();
     Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
     Task<int> CountAsync(ISpecification<T> specification);
     void Add(T entity);
