@@ -1,4 +1,5 @@
-﻿using ecommerce_api.Data.UnityOfWork.Interfaces;
+﻿using ecommerce_api.Data.Specifications;
+using ecommerce_api.Data.UnityOfWork.Interfaces;
 using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Models.OrderAggregate;
 using ecommerce_api.Domain.Repositories.Interfaces;
@@ -48,18 +49,22 @@ public class OrderService : IOrderService
         return order;
     }
 
-    public Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string buyerEmail)
+    public async Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string buyerEmail)
     {
-        throw new NotImplementedException();
+        var spec = new OrdersWithItemsAndOrderingSpecification(buyerEmail);
+
+        return await _unityOfWork.Repository<Order>().ListAsync(spec);
     }
 
-    public Task<Order> GetOrderByIdAsync(int id, string buyerEmail)
+    public async Task<Order> GetOrderByIdAsync(int id, string buyerEmail)
     {
-        throw new NotImplementedException();
+        var spec = new OrdersWithItemsAndOrderingSpecification(id, buyerEmail);
+
+        return await _unityOfWork.Repository<Order>().GetEntityWithSpec(spec);
     }
 
-    public Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodAsync()
+    public async Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodAsync()
     {
-        throw new NotImplementedException();
+        return await _unityOfWork.Repository<DeliveryMethod>().ListAllAsync();
     }
 }
