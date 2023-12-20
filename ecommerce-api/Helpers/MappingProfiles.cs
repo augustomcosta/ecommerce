@@ -23,9 +23,16 @@ public class MappingProfiles : Profile
         CreateMap<CustomerBasketDto, CustomerBasket>();
         CreateMap<BasketItemDto, BasketItem>();
         CreateMap<AddressDto, Domain.Models.OrderAggregate.Address>();
-        CreateMap<OrderItem, OrderItemDto>();
-        CreateMap<Order, OrderToReturnDto>();
-
+        CreateMap<OrderItem, OrderItemDto>()
+            .ForMember(d => d.ProductId, o => o.MapFrom(s => s.ItemOrdered.ProductItemId))
+            .ForMember(d => d.ProductName, o => o.MapFrom(s => s.ItemOrdered.ProductName))
+            .ForMember(d => d.ImageUrl, o => o.MapFrom(s => s.ItemOrdered.ImageUrl))
+            .ForMember(d => d.ImageUrl, o => o.MapFrom<OrderItemUrlResolver>());
+        CreateMap<Order, OrderToReturnDto>()
+            .ForMember(d => d.DeliveryMethod,
+                o => o.MapFrom(s => s.DeliveryMethod.ShortName))
+            .ForMember(d => d.ShippingPrice, 
+                o => o.MapFrom(s => s.DeliveryMethod.Price));
     }
     
     
