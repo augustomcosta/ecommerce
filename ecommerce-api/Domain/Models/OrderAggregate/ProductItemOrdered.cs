@@ -1,6 +1,8 @@
-﻿namespace ecommerce_api.Domain.Models.OrderAggregate;
+﻿using ecommerce_api.Domain.Entities.Base;
 
-public class ProductItemOrdered
+namespace ecommerce_api.Domain.Models.OrderAggregate;
+
+public class ProductItemOrdered : ModelBase
 {
     public ProductItemOrdered()
     {

@@ -1,6 +1,8 @@
-﻿namespace ecommerce_api.Domain.Models.OrderAggregate;
+﻿using ecommerce_api.Domain.Entities.Base;
 
-public class Address
+namespace ecommerce_api.Domain.Models.OrderAggregate;
+
+public class Address : ModelBase
 {
     public Address()
     {
