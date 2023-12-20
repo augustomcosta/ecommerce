@@ -15,8 +15,8 @@ public class Order : ModelBase
 
     public Order(){}
     
-    public Order(string buyerEmail, Address shipToAddress, DeliveryMethod deliveryMethod,
-        IReadOnlyList<OrderItem> orderItems, decimal subtotal)
+    public Order(IReadOnlyList<OrderItem> orderItems,string buyerEmail, Address shipToAddress, DeliveryMethod deliveryMethod,
+         decimal subtotal)
     {
         BuyerEmail = buyerEmail;
         ShipToAddress = shipToAddress;
