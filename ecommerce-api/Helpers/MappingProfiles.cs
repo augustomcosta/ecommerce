@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Domain.Models;
 using ecommerce_api.Domain.Entities;
-using ecommerce_api.Domain.Models.Identity;
+using ecommerce_api.Domain.Models.OrderAggregate;
 using ecommerce_api.Dtos;
+using Address = ecommerce_api.Domain.Models.Identity.Address;
 
 namespace ecommerce_api.Helpers;
 
@@ -22,6 +23,9 @@ public class MappingProfiles : Profile
         CreateMap<CustomerBasketDto, CustomerBasket>();
         CreateMap<BasketItemDto, BasketItem>();
         CreateMap<AddressDto, Domain.Models.OrderAggregate.Address>();
+        CreateMap<OrderItem, OrderItemDto>();
+        CreateMap<Order, OrderToReturnDto>();
+
     }
     
     
