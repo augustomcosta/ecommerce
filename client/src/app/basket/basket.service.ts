@@ -66,6 +66,7 @@ export class BasketService {
     
     }
   }
+
   deleteBasket(basket: Basket) {
     return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe({
       next: () => {
@@ -117,7 +118,9 @@ export class BasketService {
       const total = subtotal + shipping;
       this.basketTotalSource.next({shipping, total, subtotal});
   }
+
   private isProduct(item: Product | BasketItem): item is Product {
     return (item as Product).brand !== undefined;
   }
+
 }

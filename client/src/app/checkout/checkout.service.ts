@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DeliveryMethod } from '../shared/models/deliveryMethod';
 import { map } from 'rxjs';
+import { Basket } from '../shared/models/basket';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,9 @@ export class CheckoutService {
       })
     )
   }
+
+  isBasket(basket: Basket): basket is Basket {
+    return (basket as Basket).id !== undefined;
+  }
+
 }
