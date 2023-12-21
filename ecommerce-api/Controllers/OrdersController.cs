@@ -6,6 +6,7 @@ using ecommerce_api.Domain.Services.Interfaces;
 using ecommerce_api.Dtos;
 using ecommerce_api.Errors;
 using ecommerce_api.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce_api.Controllers;
