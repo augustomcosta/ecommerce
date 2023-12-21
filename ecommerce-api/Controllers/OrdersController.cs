@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce_api.Controllers;
 
+[Authorize]
 public class OrdersController : BaseController
 {
 
