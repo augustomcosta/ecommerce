@@ -16,11 +16,14 @@ export class TextInputComponent implements ControlValueAccessor {
     this.controlDir.valueAccessor = this;
   }
 
+  onTouched(){}
+
   writeValue(obj: any): void {
   }
   registerOnChange(fn: any): void {
   }
   registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 
   get control(): FormControl {
