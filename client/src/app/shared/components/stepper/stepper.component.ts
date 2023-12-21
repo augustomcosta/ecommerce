@@ -10,6 +10,10 @@ import { Component, Input } from '@angular/core';
 export class StepperComponent extends CdkStepper{
   @Input() linearModeSelected = true;
 
+  ngOnInit(): void {
+    this.linear = this.linearModeSelected;
+  }
+
   onClick(index: number) {
     this.selectedIndex = index;
   }
