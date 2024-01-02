@@ -1,6 +1,6 @@
 ﻿using Domain.Models;
 
-namespace ecommerce_api.Domain.Repositories;
+namespace ecommerce_api.Domain.Repositories.Interfaces;
 
 public interface IBasketRepository
 {

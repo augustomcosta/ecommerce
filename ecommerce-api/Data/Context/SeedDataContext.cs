@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using ecommerce_api.Domain.Entities;
+using ecommerce_api.Domain.Models.OrderAggregate;
 
 namespace ecommerce_api.Data.Context;
 
@@ -26,6 +27,13 @@ public class SeedDataContext
             var productsData = File.ReadAllText("../ecommerce-api/Data/SeedData/products.json");
             var products = JsonSerializer.Deserialize<List<Product>>(productsData); 
             context.Products.AddRange(products);
+        }
+        
+        if (!context.DeliveryMethods.Any())
+        {
+            var deliveryData = File.ReadAllText("../ecommerce-api/Data/SeedData/delivery.json");
+            var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryData); 
+            context.DeliveryMethods.AddRange(methods);
         }
         
         if (context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();

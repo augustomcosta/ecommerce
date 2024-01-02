@@ -319,13 +319,13 @@ namespace ecommerce_api.Migrations.AppIdentityDb
 
             modelBuilder.Entity("ecommerce_api.Domain.Models.Identity.Address", b =>
                 {
-                    b.HasOne("ecommerce_api.Domain.Models.Identity.AppUser", "App")
+                    b.HasOne("ecommerce_api.Domain.Models.Identity.AppUser", "AppUser")
                         .WithOne("Address")
                         .HasForeignKey("ecommerce_api.Domain.Models.Identity.Address", "AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("App");
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("ecommerce_api.Domain.Models.Identity.AppUser", b =>

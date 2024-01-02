@@ -1,6 +1,6 @@
 ﻿using ecommerce_api.Domain.Entities;
 
-namespace ecommerce_api.Domain.Repositories;
+namespace ecommerce_api.Domain.Repositories.Interfaces;
 
 public interface IProductRepository
 {

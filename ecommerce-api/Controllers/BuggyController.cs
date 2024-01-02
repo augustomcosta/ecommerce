@@ -1,5 +1,6 @@
 ﻿using ecommerce_api.Controllers.Base;
 using ecommerce_api.Data.Context;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce_api.Controllers;
@@ -11,6 +12,13 @@ public class BuggyController : BaseController
     public BuggyController(AppDbContext context)
     {
         _context = context;
+    }
+
+    [HttpGet("testauth")]
+    [Authorize]
+    public ActionResult<string> GetSecretText()
+    {
+        return "secret stuff";
     }
 
     [HttpGet("notfound")]

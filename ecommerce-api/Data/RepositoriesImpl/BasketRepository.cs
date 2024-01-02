@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using Domain.Models;
 using ecommerce_api.Domain.Repositories;
+using ecommerce_api.Domain.Repositories.Interfaces;
 using StackExchange.Redis;
 
 namespace ecommerce_api.Data.RepositoriesImpl;
