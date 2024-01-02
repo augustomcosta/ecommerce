@@ -1,4 +1,5 @@
-﻿using ecommerce_api.Data.Context;
+﻿using System.Text.Json.Serialization;
+using ecommerce_api.Data.Context;
 using ecommerce_api.Data.Identity;
 using ecommerce_api.Data.RepositoriesImpl;
 using ecommerce_api.Data.UnityOfWork;
@@ -63,6 +64,11 @@ public static class ApplicationServicesExtensions
             {
                 policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
             });
+        });
+
+        services.AddControllers().AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         });
             
         return services;
