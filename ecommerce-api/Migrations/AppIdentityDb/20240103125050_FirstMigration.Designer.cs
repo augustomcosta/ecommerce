@@ -12,7 +12,7 @@ using ecommerce_api.Data.Identity;
 namespace ecommerce_api.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20231213153919_FirstMigration")]
+    [Migration("20240103125050_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -322,13 +322,13 @@ namespace ecommerce_api.Migrations.AppIdentityDb
 
             modelBuilder.Entity("ecommerce_api.Domain.Models.Identity.Address", b =>
                 {
-                    b.HasOne("ecommerce_api.Domain.Models.Identity.AppUser", "App")
+                    b.HasOne("ecommerce_api.Domain.Models.Identity.AppUser", "AppUser")
                         .WithOne("Address")
                         .HasForeignKey("ecommerce_api.Domain.Models.Identity.Address", "AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("App");
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("ecommerce_api.Domain.Models.Identity.AppUser", b =>

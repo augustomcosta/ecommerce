@@ -18,39 +18,6 @@ public class OrderService : IOrderService
         _basketRepo = basketRepo;
     }
     
-<<<<<<< HEAD
-    public async Task<Order?> CreateOrderAsync(string? buyerEmail, int deliveryMethodId, string? basketId, Address? shippingAddress)
-    {
-        var basket = await _basketRepo.GetBasketAsync(basketId);
-
-        var items = new List<OrderItem?>();
-
-        foreach (var item in basket.Items)
-        {
-            var productItem = await _unityOfWork.Repository<Product>().GetByIdAsync(item.Id);
-            var itemOrdered = new ProductItemOrdered(productItem.Id, productItem.Name, productItem.ImageUrl);
-            var orderItem = new OrderItem(itemOrdered, productItem.Price, item.Quantity);
-            items.Add(orderItem);
-        }
-
-        var deliveryMethod = await _unityOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
-
-        var paymentIntentId = await _unityOfWork.Repository<PaymentIntent>().GetByIdAsync
-
-        var subTotal = items.Sum(item => item.Price * item.Quantity);
-
-        var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subTotal,);
-        
-        _unityOfWork.Repository<Order>().Add(order);
-
-        var result = await _unityOfWork.Complete();
-
-        if (result <= 0) return null;
-
-        await _basketRepo.DeleteBasketAsync(basketId);
-        
-        return order;
-=======
   public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
 {
     var basket = await _basketRepo.GetBasketAsync(basketId);
@@ -63,14 +30,13 @@ public class OrderService : IOrderService
         var itemOrdered = new ProductItemOrdered(productItem.Id, productItem.Name, productItem.ImageUrl);
         var orderItem = new OrderItem(itemOrdered, productItem.Price, item.Quantity);
         items.Add(orderItem);
->>>>>>> 2d3df45019c5f2127538fffff19f774047a9ac8b
     }
 
     var deliveryMethod = await _unityOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
 
     var subTotal = items.Sum(item => item.Price * item.Quantity);
 
-    var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subTotal);
+    var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subTotal, basket.PaymentIntentId);
     
 
     _unityOfWork.Repository<Order>().Add(order);

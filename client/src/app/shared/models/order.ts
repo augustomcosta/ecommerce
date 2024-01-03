@@ -12,15 +12,18 @@ export interface Order {
   orderDate: string;
   shipToAddress?: any;
   deliveryMethod: DeliveryMethod;
+  shippingPrice: number;
   orderItems: OrderItem[];
   subtotal: number;
+  total: number;
   status: string;
   id: number;
 }
 
 export interface OrderItem {
-  itemOrdered?: any;
+  productId: number;
+  productName: string;
+  imageUrl: string;
   price: number;
   quantity: number;
-  id: number;
 }

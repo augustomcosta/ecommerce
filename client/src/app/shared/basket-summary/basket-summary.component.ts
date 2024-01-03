@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Basket, BasketItem } from '../models/basket';
+import { Basket, IBasketItem } from '../models/basket';
 import { BasketService } from '../../basket/basket.service';
 
 @Component({
@@ -8,13 +8,13 @@ import { BasketService } from '../../basket/basket.service';
   styleUrl: './basket-summary.component.scss'
 })
 export class BasketSummaryComponent {
-  @Output() addItem = new EventEmitter<BasketItem>();
+  @Output() addItem = new EventEmitter<IBasketItem>();
   @Output() removeItem = new EventEmitter<{id:number, quantity: number}>();
   @Input() isBasket = true;
 
   constructor(public basketService: BasketService) {}
 
-  addBasketItem(item: BasketItem) {
+  addBasketItem(item: IBasketItem) {
     this.addItem.emit(item);
   }
 

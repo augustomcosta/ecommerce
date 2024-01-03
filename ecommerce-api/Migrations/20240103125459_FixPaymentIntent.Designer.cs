@@ -12,8 +12,8 @@ using ecommerce_api.Data.Context;
 namespace ecommerce_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231226125337_OrderEntityAdded")]
-    partial class OrderEntityAdded
+    [Migration("20240103125459_FixPaymentIntent")]
+    partial class FixPaymentIntent
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -182,7 +182,6 @@ namespace ecommerce_api.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("PaymentIntentId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ShipToAddressId")

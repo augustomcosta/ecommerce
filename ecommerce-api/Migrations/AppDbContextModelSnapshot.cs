@@ -178,6 +178,9 @@ namespace ecommerce_api.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("PaymentIntentId")
+                        .HasColumnType("text");
+
                     b.Property<int>("ShipToAddressId")
                         .HasColumnType("integer");
 
