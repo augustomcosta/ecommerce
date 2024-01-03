@@ -30,7 +30,7 @@ export class BasketService {
   }
 
   getBasket(id: string) {
-    return this.http.get<Basket>(this.baseUrl + 'basket?id=' + id).subscribe({
+    return this.http.get<IBasket>(this.baseUrl + 'basket?id=' + id).subscribe({
       next: basket =>{ 
         this.basketSource.next(basket)
         this.calculateTotals();
@@ -38,8 +38,8 @@ export class BasketService {
     })
   }
 
-  setBasket(basket: Basket) {
-    return this.http.post<Basket>(this.baseUrl + 'basket', basket).subscribe({
+  setBasket(basket: IBasket) {
+    return this.http.post<IBasket>(this.baseUrl + 'basket', basket).subscribe({
       next: basket => { 
         this.basketSource.next(basket)
         this.calculateTotals();
@@ -73,7 +73,7 @@ export class BasketService {
     }
   }
 
-  deleteBasket(basket: Basket) {
+  deleteBasket(basket: IBasket) {
     return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe({
       next: () => {
         this.basketSource.next(null);
@@ -96,7 +96,7 @@ export class BasketService {
     return items;
   }
 
-  private createBasket(): Basket {
+  private createBasket(): IBasket {
     const basket = new Basket();
     localStorage.setItem('basket_id',basket.id);
     return basket;
