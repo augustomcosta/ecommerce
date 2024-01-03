@@ -11,7 +11,10 @@ public class Order : ModelBase
     public IReadOnlyList<OrderItem> OrderItems { get; set; }
     public decimal Subtotal { get; set; }
     public OrderStatus Status { get; set; } = OrderStatus.Pending;
+<<<<<<< HEAD
     public PaymentIntent PaymentIntent { get; set; }
+=======
+>>>>>>> 2d3df45019c5f2127538fffff19f774047a9ac8b
 
     public Order(){}
     

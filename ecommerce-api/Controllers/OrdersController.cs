@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using AutoMapper;
 using ecommerce_api.Controllers.Base;
 using ecommerce_api.Domain.Models.OrderAggregate;
@@ -27,6 +28,7 @@ public class OrdersController : BaseController
     [HttpPost]
     public async Task<ActionResult<Order?>> CreateOrder(OrderDto orderDto)
     {
+        try {
         var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
         var address = _mapper.Map<AddressDto, Address>(orderDto.ShipToAddress);
@@ -36,6 +38,12 @@ public class OrdersController : BaseController
         if (order == null) return BadRequest(new ApiResponse(400, "Problem creating order"));
 
         return Ok(order);
+        }
+
+        catch(Exception ex) {
+            Console.WriteLine(ex.InnerException.Message);
+            throw;
+        }
     }
 
     [HttpGet]
