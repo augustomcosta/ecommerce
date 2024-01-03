@@ -18,11 +18,11 @@ public class OrderService : IOrderService
         _basketRepo = basketRepo;
     }
     
-    public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
+    public async Task<Order?> CreateOrderAsync(string? buyerEmail, int deliveryMethodId, string? basketId, Address? shippingAddress)
     {
         var basket = await _basketRepo.GetBasketAsync(basketId);
 
-        var items = new List<OrderItem>();
+        var items = new List<OrderItem?>();
 
         foreach (var item in basket.Items)
         {
@@ -34,9 +34,11 @@ public class OrderService : IOrderService
 
         var deliveryMethod = await _unityOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
 
+        var paymentIntentId = await _unityOfWork.Repository<PaymentIntent>().GetByIdAsync
+
         var subTotal = items.Sum(item => item.Price * item.Quantity);
 
-        var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subTotal);
+        var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subTotal,);
         
         _unityOfWork.Repository<Order>().Add(order);
 

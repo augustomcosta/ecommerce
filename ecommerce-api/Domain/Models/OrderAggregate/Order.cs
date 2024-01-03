@@ -11,18 +11,19 @@ public class Order : ModelBase
     public IReadOnlyList<OrderItem> OrderItems { get; set; }
     public decimal Subtotal { get; set; }
     public OrderStatus Status { get; set; } = OrderStatus.Pending;
-    public string PaymentIntentId { get; set; }
+    public PaymentIntent PaymentIntent { get; set; }
 
     public Order(){}
     
     public Order(IReadOnlyList<OrderItem> orderItems,string buyerEmail, Address shipToAddress, DeliveryMethod deliveryMethod,
-         decimal subtotal)
+         decimal subtotal, PaymentIntent paymentIntent)
     {
         BuyerEmail = buyerEmail;
         ShipToAddress = shipToAddress;
         DeliveryMethod = deliveryMethod;
         OrderItems = orderItems;
         Subtotal = subtotal;
+        PaymentIntent = paymentIntent;
     }
 
     public decimal GetTotal()

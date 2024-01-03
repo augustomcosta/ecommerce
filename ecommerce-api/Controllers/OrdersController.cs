@@ -25,7 +25,7 @@ public class OrdersController : BaseController
     }
 
     [HttpPost]
-    public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
+    public async Task<ActionResult<Order?>> CreateOrder(OrderDto orderDto)
     {
         var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
