@@ -95,6 +95,12 @@ export class BasketService {
     })
   }
 
+  deleteLocalBasket(id: string) {
+    this.basketSource.next(null);
+    this.basketTotalSource.next(null);
+    localStorage.removeItem('basket_id');
+  }
+
   private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
     const item = items.find(x => x.id === itemToAdd.id);
 
