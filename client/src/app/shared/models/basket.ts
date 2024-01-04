@@ -16,12 +16,13 @@ export interface IBasket {
   clientSecret?: string;
   paymentIntentId?: string;
   deliveryMethodId?: number;
-  shippingPrice?: number;
+  shippingPrice: number;
 }
 
 export class Basket implements IBasket {
   id = cuid();
   items: IBasketItem[] = [];
+  shippingPrice = 0;
 }
 
 export interface IBasketTotals {
