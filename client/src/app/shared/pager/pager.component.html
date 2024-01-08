@@ -1,7 +1,12 @@
 <ngb-pagination *ngIf = "totalCount && pageSize "
+    [boundaryLinks]="true"
     [directionLinks]="true" 
     [collectionSize]="totalCount" 
     [pageSize]="pageSize" 
     [maxSize]="10" 
+    [ngModel]="pageNumber"
     (pageChange)= onPagerChanged($event)>
-    </ngb-pagination>
+    previousText="&lsaquo;"
+    firstText="&laquo;"
+    lastText="&raquo;"
+</ngb-pagination>

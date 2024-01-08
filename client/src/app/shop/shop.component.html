@@ -1,4 +1,3 @@
-
 <div class="container mt-5">
     <div class="row" *ngIf="categories.length > 0 && brands.length > 0">
         <section class="col-3">
@@ -56,9 +55,9 @@
                 <app-pager
                 [totalCount]="totalCount"
                 [pageSize]="shopParams.pageSize"
+                [pageNumber]="shopParams.pageIndex"
                 (pageChanged)="onPageChanged($event)"
-                >
-                </app-pager>
+                ></app-pager>
             </div>
         </section>
     </div>
