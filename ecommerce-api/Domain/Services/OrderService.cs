@@ -1,4 +1,5 @@
-﻿using ecommerce_api.Data.Specifications;
+﻿using Core.Specifications;
+using ecommerce_api.Data.Specifications;
 using ecommerce_api.Data.UnityOfWork.Interfaces;
 using ecommerce_api.Domain.Entities;
 using ecommerce_api.Domain.Models.OrderAggregate;
@@ -19,7 +20,7 @@ public class OrderService : IOrderService
     }
     
   public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
-{
+    {
     var basket = await _basketRepo.GetBasketAsync(basketId);
 
     var items = new List<OrderItem>();
@@ -36,8 +37,22 @@ public class OrderService : IOrderService
 
     var subTotal = items.Sum(item => item.Price * item.Quantity);
 
-    var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subTotal, basket.PaymentIntentId);
+    var spec = new OrderByPaymentIntentIdSpecification(basket.PaymentIntentId);
     
+    var order = await _unityOfWork.Repository<Order>().GetEntityWithSpec(spec);
+    
+    if (order != null)
+    {
+        order.ShipToAddress = shippingAddress;
+        order.DeliveryMethod = deliveryMethod;
+        order.Subtotal = subTotal;
+        _unityOfWork.Repository<Order>().Update(order);
+    }
+    else
+    {
+        order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subTotal, basket.PaymentIntentId);
+        _unityOfWork.Repository<Order>().Add(order);
+    }
 
     _unityOfWork.Repository<Order>().Add(order);
 
@@ -48,7 +63,7 @@ public class OrderService : IOrderService
     await _basketRepo.DeleteBasketAsync(basketId);
 
     return order;
-}
+    }
 
     public async Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string buyerEmail)
     {

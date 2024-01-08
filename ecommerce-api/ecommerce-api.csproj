@@ -30,4 +30,8 @@
       <Folder Include="wwwroot\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Data\Specifications\OrderByPaymentIntentIdWithItemsSpecification" />
+    </ItemGroup>
+
 </Project>
