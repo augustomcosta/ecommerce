@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Core.Specifications;
+using Domain.Models;
 using ecommerce_api.Data.UnityOfWork.Interfaces;
 using ecommerce_api.Domain.Models.OrderAggregate;
 using ecommerce_api.Domain.Repositories.Interfaces;
@@ -75,5 +76,31 @@ public class PaymentService : IPaymentService
         await _basketRepository.UpdateBasketAsync(basket);
 
         return basket;
+    }
+
+    public async Task<Order> UpdateOrderPaymentSucceeded(string paymentIntentId)
+    {
+        var spec = new OrderByPaymentIntentIdSpecification(paymentIntentId);
+        var order = await _unityOfWork.Repository<Order>().GetEntityWithSpec(spec);
+
+        if (order == null) return null;
+        
+        order.Status = OrderStatus.PaymentReceived;
+        await _unityOfWork.Complete();
+        
+        return order;
+    }
+
+    public async Task<Order> UpdateOrderPaymentFailed(string paymentIntentId)
+    {
+        var spec = new OrderByPaymentIntentIdSpecification(paymentIntentId);
+        var order = await _unityOfWork.Repository<Order>().GetEntityWithSpec(spec);
+
+        if (order == null) return null;
+        
+        order.Status = OrderStatus.PaymentFailed;
+        await _unityOfWork.Complete();
+        
+        return order;
     }
 }

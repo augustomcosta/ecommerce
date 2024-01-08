@@ -19,7 +19,7 @@ public static class ApplicationServicesExtensions
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
     {
-        
+        services.AddSingleton<IResponseCacheService, ResponseCacheService>();
         services.AddDbContext<AppDbContext>(options =>
         {
             options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
