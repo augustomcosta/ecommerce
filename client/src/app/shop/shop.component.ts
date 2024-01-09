@@ -106,8 +106,8 @@ onSearch() {
 
 onReset() {
   if(this.searchTerm) this.searchTerm.nativeElement.value = '';
-  const params = new ShopParams();
-  this.shopService.setshopParams(params);
+  this.shopParams = new ShopParams();
+  this.shopService.setshopParams(this.shopParams);
   this.getProducts();
 }
 
